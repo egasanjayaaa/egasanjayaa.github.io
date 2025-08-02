@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(to top, #ffdde1, #ee9ca7);
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #5d5d5d;
+}
+
+/* ## KODE PENTING UNTUK ANIMASI LATAR BELAKANG ## */
+#butterfly-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Pastikan canvas ada di paling belakang */
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    position: relative;
+    z-index: 1; /* Pastikan konten ada di depan canvas */
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 45px;
+    text-align: center;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.card h1 {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    color: #c83a5f;
+    margin-bottom: 25px;
+}
+
+.card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.card p.separator {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: #858585;
+    margin: 35px auto;
+    padding: 25px 0;
+    border-top: 1px solid rgba(200, 58, 95, 0.2);
+    border-bottom: 1px solid rgba(200, 58, 95, 0.2);
+    max-width: 90%;
+}
+
+.card p.signature {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #c83a5f;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.prompt-text {
+    margin-top: 35px;
+    margin-bottom: -15px;
+    color: #a35169;
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.2s forwards;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #c83a5f;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    .card-container { padding: 20px; }
+    .card { padding: 30px 25px; border-radius: 20px; }
+    .card h1 { font-size: 2rem; }
+    .card p { font-size: 1rem; line-height: 1.7; }
+    .card p.separator { margin: 25px auto; padding: 20px 0; }
+    .card p.signature { font-size: 1.1rem; }
+    .prompt-text { font-size: 0.95rem; }
+    .whatsapp-button { padding: 10px 25px; font-size: 0.95rem; margin-top: 25px; }
+}
